@@ -90,6 +90,12 @@ footer.footer ul li {
     margin-right: 10px;
 }
 
+
+.skill-badge {
+    width: 120px; /* You can adjust the width to your preferred size */
+    height: auto; /* The height will adjust automatically to maintain the aspect ratio */
+}
+
 /* Flip Box */
 .flip-box {
     background-color: transparent;
