@@ -91,6 +91,58 @@ footer.footer ul li {
 }
 
 
+/* Add custom CSS styles for the gallery images */
+/* Add custom CSS styles for the gallery images */
+/* Add custom CSS styles for the gallery images */
+#galleryImages .card {
+    height: 100%;
+}
+
+#galleryImages .card-img-top {
+    object-fit: cover;
+    height: 200px; /* Adjust the height as needed */
+    cursor: pointer; /* Add a pointer cursor to indicate clickable image */
+}
+
+/* CSS for the Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 50px; /* Add space for the close button */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scrolling if needed */
+    background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+.modal-content {
+    max-width: 30%; /* Set a maximum width for the modal content */
+    max-height: 50vh; /* Set a maximum height for the modal content */
+    margin: auto;
+    display: block;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
 .skill-badge {
     width: 120px; /* You can adjust the width to your preferred size */
     height: auto; /* The height will adjust automatically to maintain the aspect ratio */

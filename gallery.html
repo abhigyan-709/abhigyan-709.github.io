@@ -43,75 +43,21 @@
         </div>
     </nav>
 
-    
-    <!-- Picture Gallery section -->
     <section id="gallery" class="py-5">
         <div class="container">
-            <h2>Picture Gallery</h2>
+            <h2>Because a picture can say 1000 words!</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4" id="galleryImages">
                 <!-- Gallery images will be dynamically added here -->
             </div>
         </div>
     </section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script>
-        // Your Google Drive folder ID
-        const folderId = '1VKLCzkU1cBTdgwEY7aYh3sbK9pWxaPVL';
-
-        // Your Google Drive API client ID
-        const clientId = '133367934280-lv7vb5877tuh2cr215obp3s8inm1l24m.apps.googleusercontent.com';
-
-        // Your Google Drive API client secret
-        const clientSecret = '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';
-
-        // Function to authenticate the user
-        function authenticate() {
-            gapi.auth2.init({
-                client_id: clientId,
-                client_secret: clientSecret,
-                scope: 'https://www.googleapis.com/auth/drive.metadata.readonly'
-            }).then(() => {
-                const authInstance = gapi.auth2.getAuthInstance();
-                authInstance.signIn().then(() => {
-                    fetchImages();
-                });
-            });
-        }
-
-        // Function to fetch images from the Google Drive folder
-        function fetchImages() {
-            gapi.client.load('drive', 'v3', () => {
-                gapi.client.drive.files.list({
-                    q: `'${folderId}' in parents and mimeType contains 'image/'`,
-                    fields: 'files(id, webContentLink, name)',
-                    orderBy: 'random()',
-                    pageSize: 9
-                }).then((response) => {
-                    const galleryImages = document.getElementById('galleryImages');
-                    const files = response.result.files;
-                    files.forEach((file) => {
-                        const imageCard = document.createElement('div');
-                        imageCard.classList.add('col');
-                        imageCard.innerHTML = `
-                            <div class="card">
-                                <img src="${file.webContentLink}" class="card-img-top" alt="${file.name}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${file.name}</h5>
-                                </div>
-                            </div>
-                        `;
-                        galleryImages.appendChild(imageCard);
-                    });
-                });
-            });
-        }
-    </script>
-    <!-- Load the Google Drive API -->
-    <script src="https://apis.google.com/js/api.js?onload=authenticate"></script>
-
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+   
     <!-- Footer section -->
     <footer class="footer bg-dark text-white text-center py-4">
         <div class="container">
