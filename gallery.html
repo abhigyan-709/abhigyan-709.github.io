@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhigyan Kumar - About Me</title>
+    <title>Contact - Abhigyan Kumar</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Include the Navigation Bar -->
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Abhigyan Kumar</a>
+            <a class="navbar-brand" href="index.html">Abhigyan Kumar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,29 +43,76 @@
         </div>
     </nav>
 
-    <!-- Hero section -->
-    <header class="hero bg-light text-center py-5">
+    
+    <!-- Picture Gallery section -->
+    <section id="gallery" class="py-5">
         <div class="container">
-            <!-- Add your SVG logo as an image -->
-            <!-- Add your logo title or any other content here -->
-            <h2>Welcome to My Portfolio</h2>
-            <p>Hi, I'm Abhigyan Kumar, and I'm a DevOps Engineer.</p>
-        </div>
-    </header>
-
-    <!-- About section -->
-    <section id="about" class="about py-5">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>
-                Write a brief introduction about yourself here.
-            </p>
+            <h2>Picture Gallery</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="galleryImages">
+                <!-- Gallery images will be dynamically added here -->
+            </div>
         </div>
     </section>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Your Google Drive folder ID
+        const folderId = 'YOUR_GOOGLE_DRIVE_FOLDER_ID';
+
+        // Your Google Drive API client ID
+        const clientId = 'YOUR_GOOGLE_DRIVE_API_CLIENT_ID';
+
+        // Your Google Drive API client secret
+        const clientSecret = 'YOUR_GOOGLE_DRIVE_API_CLIENT_SECRET';
+
+        // Function to authenticate the user
+        function authenticate() {
+            gapi.auth2.init({
+                client_id: clientId,
+                client_secret: clientSecret,
+                scope: 'https://www.googleapis.com/auth/drive.metadata.readonly'
+            }).then(() => {
+                const authInstance = gapi.auth2.getAuthInstance();
+                authInstance.signIn().then(() => {
+                    fetchImages();
+                });
+            });
+        }
+
+        // Function to fetch images from the Google Drive folder
+        function fetchImages() {
+            gapi.client.load('drive', 'v3', () => {
+                gapi.client.drive.files.list({
+                    q: `'${folderId}' in parents and mimeType contains 'image/'`,
+                    fields: 'files(id, webContentLink, name)',
+                    orderBy: 'random()',
+                    pageSize: 9
+                }).then((response) => {
+                    const galleryImages = document.getElementById('galleryImages');
+                    const files = response.result.files;
+                    files.forEach((file) => {
+                        const imageCard = document.createElement('div');
+                        imageCard.classList.add('col');
+                        imageCard.innerHTML = `
+                            <div class="card">
+                                <img src="${file.webContentLink}" class="card-img-top" alt="${file.name}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${file.name}</h5>
+                                </div>
+                            </div>
+                        `;
+                        galleryImages.appendChild(imageCard);
+                    });
+                });
+            });
+        }
+    </script>
+    <!-- Load the Google Drive API -->
+    <script src="https://apis.google.com/js/api.js?onload=authenticate"></script>
+
     <!-- Footer section -->
-    <!-- Include the Footer -->
-    <!-- Footer content -->
     <footer class="footer bg-dark text-white text-center py-4">
         <div class="container">
             <ul class="list-inline mb-0">
@@ -99,7 +145,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="script.js"></script>
