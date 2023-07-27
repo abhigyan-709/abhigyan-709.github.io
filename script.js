@@ -180,3 +180,54 @@ let delay = 200, tid,
 rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
+
+
+// JavaScript to hide the preloader and trigger the slide-in animation when the page is fully loaded
+window.addEventListener("load", function () {
+	const preloader = document.getElementById("preloader");
+	preloader.style.display = "none";
+
+	const sections = document.querySelectorAll("section");
+	sections.forEach((section) => {
+		section.classList.add("show");
+	});
+
+	// Show project details modal when a project card is clicked
+	const projectCards = document.querySelectorAll('.project-card');
+	projectCards.forEach(card => {
+		card.addEventListener('click', () => {
+			const targetModal = card.dataset.bsTarget;
+			const projectModal = new bootstrap.Modal(document.getElementById(targetModal));
+			projectModal.show();
+		});
+	});
+
+	// Close the modal when clicking the close button
+	const closeButtons = document.querySelectorAll('.modal .btn-close');
+	closeButtons.forEach(button => {
+		button.addEventListener('click', () => {
+			const modal = button.closest('.modal');
+			const projectModal = bootstrap.Modal.getInstance(modal);
+			projectModal.hide();
+		});
+	});
+
+	// Close the modal when clicking outside of it
+	const modals = document.querySelectorAll('.modal');
+	modals.forEach(modal => {
+		modal.addEventListener('hidden.bs.modal', () => {
+			const projectModal = bootstrap.Modal.getInstance(modal);
+			projectModal.hide();
+		});
+	});
+});
+
+// Smooth scroll effect for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+	anchor.addEventListener('click', function (e) {
+		e.preventDefault();
+		document.querySelector(this.getAttribute('href')).scrollIntoView({
+			behavior: 'smooth'
+		});
+	});
+});
