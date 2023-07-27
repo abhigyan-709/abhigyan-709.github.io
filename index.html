@@ -10,12 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-
+    
     <!-- Custom CSS for slide-in animation -->
-
-    <!-- Custom CSS for slide-in animation -->
-
-    <canvas id="canvas"></canvas>
     <style>
         /* Add your custom CSS styles for the preloader here */
         #preloader {
@@ -57,6 +53,8 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+
+    <canvas id="canvas"></canvas>
     <!-- Navigation bar -->
     <div id="animation-container"></div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -116,7 +114,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <!-- Project Card 1 -->
                 <div class="col">
-                    <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal">
+                    <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal1">
                         <img src="ic1.png" class="card-img-top" alt="Project 1">
                         <div class="card-body">
                             <h5 class="card-title">Project 1</h5>
@@ -124,10 +122,10 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- Project Card 2 -->
                 <div class="col">
-                    <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal">
+                    <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal2">
                         <img src="ic1.png" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Project 2</h5>
@@ -135,10 +133,10 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- Project Card 3 -->
                 <div class="col">
-                    <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal">
+                    <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal3">
                         <img src="ic1.png" class="card-img-top" alt="Project 3">
                         <div class="card-body">
                             <h5 class="card-title">Project 3</h5>
@@ -193,39 +191,115 @@
         </div>
     </footer>
 
-    <!-- Bootstrap Modal for Project Details -->
-    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="path/to/project1.jpg" class="img-fluid" alt="Project 1">
-                    <p>Description of Project 1.</p>
-                </div>
+    <!-- ... (previous HTML code) ... -->
+
+<!-- Bootstrap Modal for Project Details - Project 1 -->
+<div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel1">Project Details - Project 1</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="path/to/project1.jpg" class="img-fluid" alt="Project 1">
+                <p>Description of Project 1.</p>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
-    <script>
-        // JavaScript to hide the preloader and trigger the slide-in animation when the page is fully loaded
-        window.addEventListener("load", function () {
-            const preloader = document.getElementById("preloader");
-            preloader.style.display = "none";
+<!-- Bootstrap Modal for Project Details - Project 2 -->
+<div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel2">Project Details - Project 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="path/to/project2.jpg" class="img-fluid" alt="Project 2">
+                <p>Description of Project 2.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-            const sections = document.querySelectorAll("section");
-            sections.forEach((section) => {
-                section.classList.add("show");
+<!-- Bootstrap Modal for Project Details - Project 3 -->
+<div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel3">Project Details - Project 3</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="path/to/project3.jpg" class="img-fluid" alt="Project 3">
+                <p>Description of Project 3.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ... (previous HTML code) ... -->
+
+<!-- ... (previous HTML code) ... -->
+<!-- ... (previous HTML code) ... -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+<script>
+    // JavaScript to hide the preloader and trigger the slide-in animation when the page is fully loaded
+    window.addEventListener("load", function () {
+        const preloader = document.getElementById("preloader");
+        preloader.style.display = "none";
+
+        const sections = document.querySelectorAll("section");
+        sections.forEach((section) => {
+            section.classList.add("show");
+        });
+
+        // Show project details modal when a project card is clicked
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const targetModal = card.dataset.bsTarget;
+                const projectModal = new bootstrap.Modal(document.getElementById(targetModal));
+                projectModal.show();
             });
         });
-    </script>
+
+        // Close the modal when clicking the close button
+        const closeButtons = document.querySelectorAll('.modal .btn-close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                const projectModal = bootstrap.Modal.getInstance(modal);
+                projectModal.hide();
+            });
+        });
+
+        // Close the modal when clicking outside of it
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('hidden.bs.modal', () => {
+                const projectModal = bootstrap.Modal.getInstance(modal);
+                projectModal.hide();
+            });
+        });
+    });
+
+    // Smooth scroll effect for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 </body>
 </html>
-
-
